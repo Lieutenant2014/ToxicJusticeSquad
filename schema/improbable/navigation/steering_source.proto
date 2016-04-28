@@ -1,0 +1,31 @@
+syntax = "proto2";
+package schema.improbable.navigation;
+
+import "improbable/entity_state.proto";
+
+import "improbable/math/vector3d.proto";
+
+message VelocityWeightPair {
+  optional improbable.math.Vector3d velocity = 1;
+  optional float weight = 2;
+}
+
+// Player controls values
+message SteeringSourceData {
+
+  enum SteeringSource {
+    WANDER = 3;
+    HERD = 4;
+    EXTERNAL = 5;
+  }
+
+  map<uint32, VelocityWeightPair> steering_sources = 2 [(improbable.key_enum) = "SteeringSource"];
+}
+
+extend improbable.EntityState {
+  optional SteeringSourceData steeringSourceDataState = 2001
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: false
+    }];
+}

@@ -1,0 +1,25 @@
+syntax = "proto2";
+package schema.improbable.player.controls;
+
+import "improbable/entity_state.proto";
+import "improbable/math/coordinates.proto";
+
+
+message PlaceObject {
+  optional improbable.math.Coordinates location = 1;
+  optional int32 objectId = 2;
+}
+
+// Player controls values
+message PlacementData {
+  // Control movement direction
+  repeated PlaceObject place_object_event = 1 [(improbable.state_event) = true];
+}
+
+extend improbable.EntityState {
+  optional PlacementData placementState = 2501
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: false
+    }];
+}

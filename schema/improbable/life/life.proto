@@ -1,0 +1,16 @@
+syntax = "proto2";
+package schema.improbable.life;
+import "improbable/entity_state.proto";
+
+message LifeData {
+  optional bool alive = 1;
+}
+
+extend improbable.EntityState {
+  optional LifeData lifeState = 2508
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: true
+    }];
+}
+

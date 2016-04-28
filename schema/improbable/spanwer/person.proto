@@ -1,0 +1,16 @@
+syntax = "proto2";
+package schema.improbable.person;
+
+import "improbable/entity_state.proto";
+
+message PersonData {
+  optional int32 personType = 1;
+}
+
+extend improbable.EntityState {
+  optional PersonData personState = 3001
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: false
+    }];
+}

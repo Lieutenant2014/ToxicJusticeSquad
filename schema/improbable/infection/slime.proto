@@ -1,0 +1,28 @@
+syntax = "proto2";
+package schema.improbable.infection;
+
+import "improbable/entity_state.proto";
+import "improbable/math/coordinates.proto";
+
+message SpreadSlimeEvent {
+  optional improbable.math.Coordinates location = 1;
+}
+
+
+message CleanSlimeEvent {
+}
+
+message SlimeData {
+  optional float slime_size = 1;
+  repeated SpreadSlimeEvent spread_slime_event = 2 [(improbable.state_event) = true];
+  repeated CleanSlimeEvent clean_slime_event = 3 [(improbable.state_event) = true];
+}
+
+extend improbable.EntityState {
+  optional SlimeData slimeState = 2505
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: true
+    }];
+}
+

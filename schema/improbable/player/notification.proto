@@ -1,0 +1,31 @@
+syntax = "proto2";
+package schema.improbable.player.notification;
+
+import "improbable/entity_state.proto";
+
+message NotificationEvent {
+  optional string title = 1;
+  optional string message = 2;
+}
+
+message NotificationData {
+  repeated NotificationEvent notification_event = 1 [(improbable.state_event) = true];
+}
+
+message ScoreData {
+  map<string, string> values = 3;
+}
+
+extend improbable.EntityState {
+  optional NotificationData notificationState = 4501
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: false
+    }];
+
+  optional ScoreData scoreState = 4502
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: false
+    }];
+}

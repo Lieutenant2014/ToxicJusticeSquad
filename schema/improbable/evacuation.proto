@@ -1,0 +1,21 @@
+syntax = "proto2";
+package schema.improbable.evacuation;
+
+import "improbable/entity_state.proto";
+
+message EvacuateMinionEvent {
+  optional int64 minion = 2 [(improbable.entity_id) = true];
+}
+
+message EvacuateMinionData {
+  repeated EvacuateMinionEvent evacuate_minion_event = 1 [(improbable.state_event) = true];
+}
+
+extend improbable.EntityState {
+  optional EvacuateMinionData evacuateMinionState = 2503
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: false
+    }];
+}
+

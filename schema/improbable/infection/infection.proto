@@ -1,0 +1,17 @@
+syntax = "proto2";
+package schema.improbable.infection;
+
+import "improbable/entity_state.proto";
+
+message InfectionData {
+  optional bool infected = 1;
+}
+
+extend improbable.EntityState {
+  optional InfectionData infectionState = 2504
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: true
+    }];
+}
+

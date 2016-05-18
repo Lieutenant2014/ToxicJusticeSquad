@@ -1,7 +1,7 @@
 # TOXIC JUSTICE SQUAD
 ## Our entry for the Nordic Game Jam 2016
 
-This is the source code of Toxic Justice Squad, the MMO we built in 48 hours for the Nordic Game Jam 2016, using Unity and SpatialOS (http://improbable.io/2016/04/28/what-we-learned-from-building-an-mmo-in-48-hours).
+This is the source code of Toxic Justice Squad, the MMO we built in 48 hours for the Nordic Game Jam 2016, using Unity and SpatialOS (https://improbable.io/2016/05/18/toxic-justice-squad-nordic-game-jam-entry).
 
 To compile and run it, you need Unity and the SpatialOS SDK. You can apply to get developer access to SpatialOS at http://improbable.io/get-spatialos
 
